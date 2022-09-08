@@ -8,10 +8,10 @@ export function Home() {
   const [studentName, setStudentName] = useState('aqui aparecerá seu nome');
   const[students, setStudents] = useState([]);
 
-  function handelAddStudent(){
+  function handleAddStudent(){
     const newStudent = {
-      name: setStudentName,
-      time: new Date().toLocaleDateString("pt-br", {
+      name: studentName,
+      time: new Date().toLocaleTimeString("pt-br", {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
@@ -27,7 +27,9 @@ export function Home() {
       placeholder="Digite um nome..." 
       onChange={e => setStudentName(e.target.value)}
       />
-      <button type="button">Adicionar</button>
+      <button type="button" onClick={handleAddStudent}>
+        Adicionar
+      </button>
 
       {
         students.map(student => <Card name={student.name} time={student.time} />)
