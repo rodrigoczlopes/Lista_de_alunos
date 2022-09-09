@@ -17,7 +17,8 @@ export function Home() {
         second: '2-digit',
       })
     };
-    setStudents([newStudent]);
+    setStudents(prevState => [...prevState, newStudent]); //... Sintaxe de Espalhamento, mostra o estado antigo sem outro vetor
+    //imutabilidade do estado, substitui o conteúdo todo, cria um novo vetor e passa o novo + o antigo
   }
   return (
     <div className="container">
