@@ -4,18 +4,32 @@
   flex-direction: column;
 }
 
-.container h1 {
+.container header {
+  width: 50%;
   margin: 5.25rem 0 1.50rem;
+  display: flex;
+  justify-content:space-between ;
+  align-items: center;
+}
+
+.container header img{
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-left: 7px;
+}
+
+.container header div{
+  display: flex;
+  align-items: center;
 }
 
 .container input {
   width: 50%;
   padding: 1.5rem;
-
   background-color: #E6E6E6;
   border-radius: 0.31rem;
   border: none;
-
   font-size: 1rem;
 }
 
@@ -40,3 +54,4 @@
 .container button:hover {
   filter: brightness(0.9);
 }
+
