@@ -7,7 +7,7 @@ export function Home() {
   //primeiro elemento do useState é o conteúdo do estado, onde fica armazenado a informação o segundo 
   //é a função e atualiza o estado, e dentro do () é o estado inicial.
   const [studentName, setStudentName] = useState('aqui aparecerá seu nome');
-  const[students, setStudents] = useState([]);
+  const [students, setStudents] = useState([]);
   const [user,setUser] = useState({name: '', avatar: ''});
 
   function handleAddStudent(){
@@ -24,14 +24,27 @@ export function Home() {
   }
 
   useEffect(() => {
-    fetch('https://api.github.com/users/rodrigoczlopes')
-    .then( response => response.json())
-    .then( data => {
+    //usando o async no useEffect
+    async function fetchData(){
+      const response = await fetch('https://api.github.com/users/rodrigoczlopes');
+      const data = await response.json();
+      console.log("DADOS===> ", data);
+
       setUser({
         name: data.name,
-        avatar: data.avatar_url,
-      })
-    });
+        avatar:data.avatar_url,
+      });
+
+    } 
+    fetchData();
+    // fetch('https://api.github.com/users/rodrigoczlopes') //sem o async
+    // .then( response => response.json())
+    // .then( data => {
+    //   setUser({
+    //     name: data.name,
+    //     avatar: data.avatar_url,
+    //   })
+    // });
   }, []);
 
   return (
